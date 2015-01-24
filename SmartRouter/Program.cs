@@ -104,8 +104,8 @@ namespace SmartRouter
                             if (dict[logStr] == 1)
                                 Console.WriteLine(logStr.Replace("OpenWrt", ""));
                             var timeStr = logStr.Substring(0, logStr.IndexOf('O') - 1);
-                            DateTime dateTime = DateTime.ParseExact("SEP 8 23:44:07", format, cultureInfo);
-                            if (logStr.Contains("now up") && DateTime.Now.Subtract(dateTime).Seconds < 10)
+                            DateTime dateTime = DateTime.ParseExact(timeStr, format, cultureInfo);
+                            if (logStr.Contains("now up") && DateTime.Now.Subtract(dateTime).TotalSeconds < 30)
                             {
                                 Console.WriteLine();
                                 Console.WriteLine("Command Complete!");
